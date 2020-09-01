@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="./tailwind.css" rel="stylesheet" />
+    <title>Bingo Builder</title>
+  </head>
+  <body>
+    <div class="flex p-3">
+      <div class="w-full" x-data="{ quantity: null, list: '' }">
+        <label
+          >Quantity
+          <input
+            x-bind:value="quantity"
+            @input="quantity = event.target.value"
+            class="my-3 border border-black rounded w-full p-1"
+            type="number"
+            placeholder="600"
+          />
+        </label>
+
+        <label
+          >List
+          <textarea
+            x-bind:value="list"
+            @input="list = event.target.value"
+            placeholder="Enter the list here (each line is a different value)"
+            class="my-3 border border-black rounded w-full p-1"
+            wrap="hard"
+            rows="15"
+          ></textarea>
+        </label>
+        <div class="flex justify-center">
+          <button
+            class="p-2 bg-blue-800 hover:bg-blue-500 transition duration-200 rounded-lg text-white"
+            @click="runBingo(list, quantity)"
+          >
+            Generate
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script src="./alpine.js"></script>
+    <script src="./bingo.js"></script>
+  </body>
+</html>
